@@ -22,6 +22,21 @@ class Controller extends GetxController with GetSingleTickerProviderStateMixin {
 
   List<Question> get questions => this._questions;
 
+  bool _isAnswered = false;
+  bool get isAnswered => this._isAnswered;
+
+  late int _correctAnswer;
+  int get correctanswer => this._correctAnswer;
+
+  late int _selectedAnswer;
+  int get selectedAnswer => this._selectedAnswer;
+
+  RxInt _questionNumber = 1.obs;
+  RxInt get questionNumber => this._questionNumber;
+
+  int _numberofCorrectAnswer = 0;
+  int get numberofCorrectAnswer => this._numberofCorrectAnswer;
+
   @override
   void onInit() {
     _animationcontroller =
@@ -33,5 +48,15 @@ class Controller extends GetxController with GetSingleTickerProviderStateMixin {
       });
     _animationcontroller.forward();
     super.onInit();
+  }
+
+  void checkAnswer(Question question, int selectedIndex) {
+    _isAnswered = true;
+    _correctAnswer = question.answer;
+    _selectedAnswer = selectedIndex;
+
+    if (_correctAnswer == _selectedAnswer) _numberofCorrectAnswer++;
+    _animationcontroller.stop();
+    update();
   }
 }
