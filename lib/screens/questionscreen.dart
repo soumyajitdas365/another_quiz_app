@@ -1,7 +1,9 @@
-// ignore_for_file: prefer_const_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors, avoid_print, unused_local_variable
 
 import 'package:another_quiz/controller/controller.dart';
 import 'package:another_quiz/konstants.dart';
+import 'package:another_quiz/models/questionsmodel.dart';
+import 'package:another_quiz/screens/questioncard.dart';
 import 'package:another_quiz/timebar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,6 +14,7 @@ class QuestionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Controller _questioncontroller = Get.put(Controller());
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -35,51 +38,68 @@ class QuestionScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Stack(
-        children: [
-          SvgPicture.asset(
-            "assets/images/bg.svg",
-            fit: BoxFit.fill,
-          ),
-          SafeArea(
-              child: Padding(
-            padding: EdgeInsets.all(kDefaultPadding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 35,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.white.withOpacity(0.7),
-                    ),
-                    borderRadius: BorderRadius.circular(30),
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            SvgPicture.asset(
+              "assets/images/bg.svg",
+              fit: BoxFit.fill,
+            ),
+            SafeArea(
+                child: Container(
+              height: 610,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                    child: TimeBar(),
                   ),
-                  child: TimeBar(),
-                ),
-                Text.rich(
-                  TextSpan(
-                    text: "Question 1/",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline4!
-                        .copyWith(color: kSecondaryColor),
-                    children: [
+                  SizedBox(
+                    height: kDefaultPadding,
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                    child: Text.rich(
                       TextSpan(
-                        text: "10",
+                        text: "Question 1/",
                         style: Theme.of(context)
                             .textTheme
-                            .headline5!
+                            .headline4!
                             .copyWith(color: kSecondaryColor),
+                        children: [
+                          TextSpan(
+                            text: "10",
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline5!
+                                .copyWith(color: kSecondaryColor),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ))
-        ],
+                  Divider(
+                    thickness: 3,
+                  ),
+                  SizedBox(
+                    height: kDefaultPadding,
+                  ),
+                  Expanded(
+                    child: PageView.builder(
+                      itemCount: _questioncontroller.questions.length,
+                      itemBuilder: (context, index) => QuestionCard(
+                        question: _questioncontroller.questions[index],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ))
+          ],
+        ),
       ),
     );
   }
