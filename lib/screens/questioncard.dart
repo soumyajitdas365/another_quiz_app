@@ -27,10 +27,12 @@ class QuestionCard extends StatelessWidget {
                 .headline6!
                 .copyWith(color: Colors.black),
           ),
-          Options(),
-          Options(),
-          Options(),
-          Options(),
+          ...List.generate(
+              question.options.length,
+              (index) => Options(
+                  text: question.options[index],
+                  index: index,
+                  onpressed: () {}))
         ],
       ),
     );
