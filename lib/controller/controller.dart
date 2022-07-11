@@ -9,6 +9,8 @@ class Controller extends GetxController with GetSingleTickerProviderStateMixin {
   late AnimationController _animationcontroller;
   late Animation _animation;
   Animation get animation => this._animation;
+  PageController? _pageController;
+  PageController? get pageController => this._pageController;
 
   List<Question> _questions = sample_data
       .map(

@@ -89,6 +89,8 @@ class QuestionScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: PageView.builder(
+                      controller: _questioncontroller.pageController,
+                      physics: NeverScrollableScrollPhysics(),
                       itemCount: _questioncontroller.questions.length,
                       itemBuilder: (context, index) => QuestionCard(
                         question: _questioncontroller.questions[index],
