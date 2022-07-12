@@ -48,8 +48,19 @@ class Controller extends GetxController with GetSingleTickerProviderStateMixin {
       ..addListener(() {
         update();
       });
-    _animationcontroller.forward();
+    _animationcontroller.forward().whenComplete(() => nextQuestion());
+    _pageController = PageController();
     super.onInit();
+  }
+
+  void nextQuestion() {
+    if (_questionNumber.value != _questions.length) {
+      _isAnswered = false;
+      _pageController!
+          .nextPage(duration: Duration(milliseconds: 250), curve: Curves.ease);
+      _animationcontroller.reset();
+      _animationcontroller.forward().whenComplete(() => nextQuestion());
+    }
   }
 
   void checkAnswer(Question question, int selectedIndex) {
@@ -60,5 +71,8 @@ class Controller extends GetxController with GetSingleTickerProviderStateMixin {
     if (_correctAnswer == _selectedAnswer) _numberofCorrectAnswer++;
     _animationcontroller.stop();
     update();
+    Future.delayed(Duration(seconds: 2), () {
+      nextQuestion();
+    });
   }
 }
