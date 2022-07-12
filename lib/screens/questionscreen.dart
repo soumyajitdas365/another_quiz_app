@@ -30,7 +30,7 @@ class QuestionScreen extends StatelessWidget {
           ),
           Spacer(),
           TextButton(
-            onPressed: () {},
+            onPressed: _questioncontroller.nextQuestion,
             child: Text(
               "Skip",
               style: TextStyle(color: Colors.white),
@@ -62,24 +62,25 @@ class QuestionScreen extends StatelessWidget {
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                    child: Text.rich(
-                      TextSpan(
-                        text: "Question 1/",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline4!
-                            .copyWith(color: kSecondaryColor),
-                        children: [
+                    child: Obx(() => Text.rich(
                           TextSpan(
-                            text: "10",
+                            text:
+                                "Question ${_questioncontroller.questionNumber.value}/",
                             style: Theme.of(context)
                                 .textTheme
-                                .headline5!
+                                .headline4!
                                 .copyWith(color: kSecondaryColor),
+                            children: [
+                              TextSpan(
+                                text: "${_questioncontroller.questions.length}",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline5!
+                                    .copyWith(color: kSecondaryColor),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
+                        )),
                   ),
                   Divider(
                     thickness: 3,
@@ -91,6 +92,7 @@ class QuestionScreen extends StatelessWidget {
                     child: PageView.builder(
                       controller: _questioncontroller.pageController,
                       physics: NeverScrollableScrollPhysics(),
+                      onPageChanged: _questioncontroller.updateQuestionNumber,
                       itemCount: _questioncontroller.questions.length,
                       itemBuilder: (context, index) => QuestionCard(
                         question: _questioncontroller.questions[index],

@@ -53,6 +53,13 @@ class Controller extends GetxController with GetSingleTickerProviderStateMixin {
     super.onInit();
   }
 
+  @override
+  void onClose() {
+    _animationcontroller.dispose();
+    _pageController?.dispose();
+    super.onClose();
+  }
+
   void nextQuestion() {
     if (_questionNumber.value != _questions.length) {
       _isAnswered = false;
@@ -74,5 +81,9 @@ class Controller extends GetxController with GetSingleTickerProviderStateMixin {
     Future.delayed(Duration(seconds: 2), () {
       nextQuestion();
     });
+  }
+
+  void updateQuestionNumber(int index) {
+    _questionNumber.value = index + 1;
   }
 }
