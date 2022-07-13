@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructor, unused_local_variable, prefer_const_constructors
 
 import 'package:another_quiz/konstants.dart';
+import 'package:another_quiz/screens/questionscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -44,7 +46,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 Spacer(),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () => Get.to(QuestionScreen()),
                   child: Container(
                     height: size.height * 0.08,
                     width: size.width * 0.9,

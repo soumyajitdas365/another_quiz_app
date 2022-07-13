@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:another_quiz/screens/scorescreen.dart';
+import 'package:another_quiz/screens/welcomescreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const QuizApp());
@@ -12,11 +13,11 @@ class QuizApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: "Quiz App",
       theme: ThemeData.dark(),
       // themeMode: ThemeMode.dark,
-      home: ScoreScreen(),
+      home: WelcomeScreen(),
     );
   }
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: unused_field, unnecessary_this, prefer_const_constructors, non_constant_identifier_names, prefer_final_fields
 
 import 'package:another_quiz/models/questionsmodel.dart';
+import 'package:another_quiz/screens/scorescreen.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -67,6 +68,8 @@ class Controller extends GetxController with GetSingleTickerProviderStateMixin {
           .nextPage(duration: Duration(milliseconds: 250), curve: Curves.ease);
       _animationcontroller.reset();
       _animationcontroller.forward().whenComplete(() => nextQuestion());
+    } else {
+      Get.to(ScoreScreen());
     }
   }
 
