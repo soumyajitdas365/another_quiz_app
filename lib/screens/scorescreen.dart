@@ -3,7 +3,6 @@
 import 'package:another_quiz/controller/controller.dart';
 import 'package:another_quiz/konstants.dart';
 
-import 'package:another_quiz/screens/welcomescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -46,20 +45,6 @@ class ScoreScreen extends StatelessWidget {
               Spacer(
                 flex: 3,
               ),
-              GestureDetector(
-                onTap: () => Get.to(WelcomeScreen()),
-                child: Container(
-                  height: 50,
-                  width: 180,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(35),
-                    gradient: kPrimaryGradient,
-                  ),
-                  child: Text("Try Again?"),
-                ),
-              ),
-              Spacer(),
             ],
           ),
         ],

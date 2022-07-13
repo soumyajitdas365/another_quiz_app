@@ -14,6 +14,7 @@ class QuizApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Quiz App",
       theme: ThemeData.dark(),
       // themeMode: ThemeMode.dark,

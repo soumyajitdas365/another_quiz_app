@@ -50,10 +50,8 @@ class WelcomeScreen extends StatelessWidget {
                   child: Container(
                     height: size.height * 0.08,
                     width: size.width * 0.9,
-                    padding: EdgeInsets.only(
-                        top: kDefaultPadding,
-                        bottom: kDefaultPadding,
-                        left: 100),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 105, vertical: 18),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(35),
                       gradient: kPrimaryGradient,
