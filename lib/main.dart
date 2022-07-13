@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:another_quiz/screens/questionscreen.dart';
 import 'package:another_quiz/screens/scorescreen.dart';
 import 'package:flutter/material.dart';
 

@@ -1,8 +1,8 @@
-// ignore_for_file: prefer_const_constructors, avoid_print, unused_local_variable
+// ignore_for_file: prefer_const_constructors, avoid_print, unused_local_variable, sized_box_for_whitespace
 
 import 'package:another_quiz/controller/controller.dart';
 import 'package:another_quiz/konstants.dart';
-import 'package:another_quiz/models/questionsmodel.dart';
+
 import 'package:another_quiz/screens/questioncard.dart';
 import 'package:another_quiz/timebar.dart';
 import 'package:flutter/material.dart';

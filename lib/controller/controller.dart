@@ -1,7 +1,7 @@
 // ignore_for_file: unused_field, unnecessary_this, prefer_const_constructors, non_constant_identifier_names, prefer_final_fields
 
 import 'package:another_quiz/models/questionsmodel.dart';
-import 'package:flutter/animation.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
